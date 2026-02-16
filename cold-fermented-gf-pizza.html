@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cold-Fermented GF Pizza — Caputo Fioreglut</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1714;
+    --paper: #faf8f5;
+    --warm: #e8e2d9;
+    --accent: #b44a2d;
+    --accent-light: #e6cec5;
+    --muted: #7a7168;
+    --code-bg: #f0ece6;
+    --shadow: 0 1px 3px rgba(26,23,20,0.08);
+    --radius: 6px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: #eee9e0;
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .recipe-page {
+    max-width: 720px;
+    margin: 2rem auto;
+    background: var(--paper);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(26,23,20,0.10);
+    overflow: hidden;
+  }
+
+  /* ── Header ── */
+  .recipe-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2.5rem 2.5rem 2rem;
+    position: relative;
+  }
+  .recipe-header::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0; right: 0;
+    height: 12px;
+    background: linear-gradient(to bottom, rgba(26,23,20,0.06), transparent);
+  }
+  .recipe-header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.85rem;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.4rem;
+  }
+  .recipe-header .subtitle {
+    font-size: 0.9rem;
+    color: rgba(250,248,245,0.6);
+    font-weight: 400;
+  }
+  .recipe-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(250,248,245,0.12);
+  }
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .meta-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(250,248,245,0.45);
+    font-weight: 500;
+  }
+  .meta-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--paper);
+  }
+
+  /* ── Body ── */
+  .recipe-body { padding: 2rem 2.5rem 2.5rem; }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 2rem 0 0.75rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 2px solid var(--warm);
+  }
+  h2:first-child { margin-top: 0; }
+
+  h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  /* ── Ingredients ── */
+  .ingredients-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .ing-section { padding: 0.25rem 0; }
+  .ing-section-title {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    grid-column: 1 / -1;
+  }
+  .ing-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+    font-size: 0.92rem;
+  }
+  .ing-qty {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--accent);
+    min-width: 50px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .ing-name { color: var(--ink); }
+
+  .note-box {
+    background: var(--code-bg);
+    border-left: 3px solid var(--accent);
+    padding: 0.65rem 0.9rem;
+    margin: 0.75rem 0;
+    font-size: 0.82rem;
+    color: var(--muted);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  /* ── Steps ── */
+  .steps { counter-reset: step; }
+  .step {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    align-items: start;
+  }
+  .step::before {
+    counter-increment: step;
+    content: counter(step);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--paper);
+    background: var(--accent);
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1rem;
+  }
+  .step p { font-size: 0.92rem; }
+
+  /* ── Shaping / Baking tables ── */
+  .spec-list {
+    list-style: none;
+    padding: 0;
+  }
+  .spec-list li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.1rem;
+    font-size: 0.92rem;
+  }
+  .spec-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ── Doneness / Troubleshooting ── */
+  .check-list {
+    list-style: none;
+    padding: 0;
+  }
+  .check-list li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.4rem;
+    font-size: 0.92rem;
+  }
+  .check-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+
+  .trouble-grid {
+    display: grid;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+  .trouble-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--code-bg);
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+  }
+  .trouble-symptom {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .trouble-fix { color: var(--muted); }
+
+  .texture-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+  .texture-tag {
+    background: var(--warm);
+    color: var(--ink);
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  /* ── Nutrition ── */
+  .nutrition-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 0.75rem;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--warm);
+  }
+  .nut-cell {
+    text-align: center;
+    padding: 0.7rem 0.5rem;
+  }
+  .nut-cell:not(:last-child) { border-right: 1px solid var(--warm); }
+  .nut-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--ink);
+    display: block;
+  }
+  .nut-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  .footer-note {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--warm);
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 520px) {
+    .recipe-page { margin: 0; border-radius: 0; }
+    .recipe-header, .recipe-body { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .recipe-header h1 { font-size: 1.5rem; }
+    .ingredients-grid { grid-template-columns: 1fr; }
+    .nutrition-bar { grid-template-columns: repeat(2, 1fr); }
+    .nut-cell:nth-child(2) { border-right: none; }
+    .nut-cell:nth-child(1), .nut-cell:nth-child(2) { border-bottom: 1px solid var(--warm); }
+    .trouble-row { grid-template-columns: 1fr; gap: 0.15rem; }
+  }
+</style>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- Schema.org Recipe (JSON-LD) for MacroFactor -->
+<!-- ════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "name": "Cold-Fermented GF Pizza (Caputo Fioreglut)",
+  "description": "Gluten-free cold-fermented pizza using Caputo Fioreglut flour, baked in a cast-iron pizza pan at 550°F. Yields 2 × 11.5\" pizzas with a crisp base and tender interior.",
+  "author": { "@type": "Person", "name": "Home Recipe" },
+  "recipeYield": "4 servings",
+  "recipeCategory": "Main Course",
+  "recipeCuisine": "Italian",
+  "keywords": "gluten-free pizza, cold ferment, Caputo Fioreglut, cast iron pizza",
+  "prepTime": "PT30M",
+  "cookTime": "PT11M",
+  "totalTime": "PT24H30M",
+  "recipeIngredient": [
+    "400 g Caputo Fioreglut flour",
+    "320 g water",
+    "8 g fine salt",
+    "2 g instant yeast",
+    "15 g olive oil",
+    "4-6 tbsp drained crushed tomatoes",
+    "200-220 g low-moisture mozzarella"
+  ],
+  "recipeInstructions": [
+    {
+      "@type": "HowToSection",
+      "name": "Dough",
+      "itemListElement": [
+        { "@type": "HowToStep", "text": "Combine flour, yeast, and salt. Add water and olive oil. Stir until fully hydrated." },
+        { "@type": "HowToStep", "text": "Knead gently 2–3 minutes until smooth. Rest 15 minutes." },
+        { "@type": "HowToStep", "text": "Cover and let sit at room temperature 30–45 minutes for initial rise." },
+        { "@type": "HowToStep", "text": "Lightly oil bowl, cover tightly, refrigerate 12–24 hours (18 hours ideal)." }
+      ]
+    },
+    {
+      "@type": "HowToSection",
+      "name": "Assembly & Bake",
+      "itemListElement": [
+        { "@type": "HowToStep", "text": "Remove dough 2 hours before baking. Divide into 2 balls (~375 g each). Round gently, cover, and rest 45–90 minutes." },
+        { "@type": "HowToStep", "text": "Oil hands, place dough on parchment, press from center outward to ~⅛\" thick with a slightly thicker rim." },
+        { "@type": "HowToStep", "text": "Preheat oven to 550°F with cast-iron pizza pan on middle rack for 30–40 minutes." },
+        { "@type": "HowToStep", "text": "Remove hot pan, brush with olive oil, slide dough on parchment onto pan. Remove parchment after 60–90 seconds." },
+        { "@type": "HowToStep", "text": "Top with 2–3 tbsp crushed tomatoes and 100–110 g mozzarella per pizza. Bake 9–11 minutes, rotating once halfway." },
+        { "@type": "HowToStep", "text": "Optional: broiler 30–60 seconds for top color. Rest 2 minutes before slicing." }
+      ]
+    }
+  ],
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "servingSize": "1/2 pizza (1 of 4 servings)",
+    "calories": "410 kcal",
+    "carbohydrateContent": "53 g",
+    "proteinContent": "14 g",
+    "fatContent": "15 g",
+    "fiberContent": "2 g",
+    "sodiumContent": "780 mg"
+  }
+}
+</script>
+</head>
+<body>
+
+<article class="recipe-page" itemscope itemtype="https://schema.org/Recipe">
+  <meta itemprop="recipeYield" content="4 servings">
+  <meta itemprop="prepTime" content="PT30M">
+  <meta itemprop="cookTime" content="PT11M">
+  <meta itemprop="totalTime" content="PT24H30M">
+
+  <!-- ── Header ── -->
+  <header class="recipe-header">
+    <h1 itemprop="name">Cold-Fermented GF Pizza</h1>
+    <div class="subtitle">Caputo Fioreglut · Cast Iron · 550°F</div>
+    <div class="recipe-meta">
+      <div class="meta-item">
+        <span class="meta-label">Yield</span>
+        <span class="meta-value">2 × 11.5" pizzas</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Serves</span>
+        <span class="meta-value">4</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Prep</span>
+        <span class="meta-value">30 min</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Ferment</span>
+        <span class="meta-value">12–24 h</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Bake</span>
+        <span class="meta-value">9–11 min</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="recipe-body">
+
+    <!-- ── Ingredients ── -->
+    <h2>Ingredients</h2>
+
+    <div class="ing-section-title">Dough</div>
+    <div class="ing-section">
+      <div class="ing-item"><span class="ing-qty">400 g</span><span class="ing-name" itemprop="recipeIngredient">Caputo Fioreglut flour</span></div>
+      <div class="ing-item"><span class="ing-qty">320 g</span><span class="ing-name" itemprop="recipeIngredient">water (80% hydration)</span></div>
+      <div class="ing-item"><span class="ing-qty">8 g</span><span class="ing-name" itemprop="recipeIngredient">fine salt</span></div>
+      <div class="ing-item"><span class="ing-qty">2 g</span><span class="ing-name" itemprop="recipeIngredient">instant yeast</span></div>
+      <div class="ing-item"><span class="ing-qty">15 g</span><span class="ing-name" itemprop="recipeIngredient">olive oil</span></div>
+    </div>
+
+    <div class="ing-section-title">Toppings (per pizza)</div>
+    <div class="ing-section">
+      <div class="ing-item"><span class="ing-qty">2–3 tbsp</span><span class="ing-name" itemprop="recipeIngredient">drained crushed tomatoes</span></div>
+      <div class="ing-item"><span class="ing-qty">100–110 g</span><span class="ing-name" itemprop="recipeIngredient">low-moisture mozzarella</span></div>
+      <div class="ing-item"><span class="ing-qty">1–2 tsp</span><span class="ing-name">olive oil (for pan)</span></div>
+    </div>
+
+    <div class="note-box">If your fridge runs warm (&gt;40°F), drop yeast to 1.5 g.</div>
+
+    <!-- ── Dough Method ── -->
+    <h2>Dough Method</h2>
+
+    <h3>1. Mix</h3>
+    <div class="steps" itemprop="recipeInstructions">
+      <div class="step"><p>Combine flour, yeast, and salt in a large bowl.</p></div>
+      <div class="step"><p>Add water + olive oil.</p></div>
+      <div class="step"><p>Stir until fully hydrated.</p></div>
+      <div class="step"><p>Knead gently 2–3 minutes until smooth.</p></div>
+      <div class="step"><p>Rest 15 minutes (important for GF structure).</p></div>
+    </div>
+
+    <h3>2. Initial Rise</h3>
+    <p>Cover and let sit at room temp <strong>30–45 minutes</strong>.</p>
+
+    <h3>3. Cold Ferment</h3>
+    <p>Lightly oil bowl, cover tightly, refrigerate <strong>12–24 hours</strong>. 18 hours is ideal.</p>
+
+    <!-- ── Next Day ── -->
+    <h2>Next Day</h2>
+
+    <h3>1. Warm Up</h3>
+    <p>Remove dough <strong>2 hours</strong> before baking.</p>
+
+    <h3>2. Divide &amp; Rest</h3>
+    <p>Divide into 2 balls (~375 g each). Gently round. Cover and rest <strong>45–90 minutes</strong> until relaxed.</p>
+
+    <div class="note-box">
+      The dough should feel: <strong>soft</strong>, <strong>slightly puffy</strong>, <strong>extensible but not sticky</strong>.
+    </div>
+
+    <!-- ── Shaping ── -->
+    <h2>Shaping <span style="font-family:'DM Sans';font-size:0.8rem;color:var(--muted);font-weight:400;">(Critical for GF)</span></h2>
+    <ul class="spec-list">
+      <li>Lightly oil your hands</li>
+      <li>Place dough on parchment</li>
+      <li>Press from center outward</li>
+      <li>Leave rim slightly thicker</li>
+      <li>Do not toss or stretch in air</li>
+      <li>Target ~⅛" thick center</li>
+    </ul>
+
+    <!-- ── Baking ── -->
+    <h2>Baking</h2>
+
+    <h3>1. Preheat</h3>
+    <ul class="spec-list">
+      <li>Cast-iron pizza pan on middle rack</li>
+      <li>Oven to <strong>550°F</strong></li>
+      <li>Heat pan <strong>30–40 minutes</strong> (non-negotiable)</li>
+    </ul>
+
+    <h3>2. Load</h3>
+    <ul class="spec-list">
+      <li>Remove hot pan carefully</li>
+      <li>Brush with 1–2 tsp olive oil</li>
+      <li>Slide dough (on parchment) onto pan</li>
+      <li>Remove parchment after 60–90 seconds</li>
+    </ul>
+
+    <h3>3. Top (Restrained)</h3>
+    <ul class="spec-list">
+      <li>2–3 tbsp drained crushed tomatoes</li>
+      <li>100–110 g low-moisture mozzarella</li>
+      <li>Keep toppings light</li>
+    </ul>
+
+    <h3>4. Bake</h3>
+    <ul class="spec-list">
+      <li><strong>9–11 minutes</strong> total</li>
+      <li>Rotate once halfway</li>
+      <li>Check underside at 9 minutes</li>
+      <li>Optional: broiler 30–60 seconds for top color</li>
+    </ul>
+
+    <!-- ── Doneness ── -->
+    <h2>Pull When</h2>
+    <ul class="check-list">
+      <li>Bottom is deep golden with dark freckles</li>
+      <li>Center feels firm when lifted</li>
+      <li>Cheese bubbling but not watery</li>
+      <li>Rim lightly blistered</li>
+    </ul>
+    <p style="margin-top:0.5rem;">Rest <strong>2 minutes</strong> before slicing.</p>
+
+    <!-- ── Troubleshooting ── -->
+    <h2>Troubleshooting</h2>
+    <div class="trouble-grid">
+      <div class="trouble-row">
+        <span class="trouble-symptom">Pale bottom</span>
+        <span class="trouble-fix">Longer pan preheat or +1–2 min bake</span>
+      </div>
+      <div class="trouble-row">
+        <span class="trouble-symptom">Soft center</span>
+        <span class="trouble-fix">Less sauce next time or +1 min bake</span>
+      </div>
+      <div class="trouble-row">
+        <span class="trouble-symptom">Cracking while shaping</span>
+        <span class="trouble-fix">Dough still too cold — wait longer</span>
+      </div>
+    </div>
+
+    <!-- ── Expected Texture ── -->
+    <h2>Expected Texture</h2>
+    <div class="texture-tags">
+      <span class="texture-tag">Crisp base</span>
+      <span class="texture-tag">Tender interior</span>
+      <span class="texture-tag">Clean slice structure</span>
+      <span class="texture-tag">Not foldable — structural physics, not technique</span>
+    </div>
+
+    <!-- ── Nutrition ── -->
+    <h2>Nutrition <span style="font-family:'DM Sans';font-size:0.8rem;color:var(--muted);font-weight:400;">(per serving, 1 of 4)</span></h2>
+    <div class="nutrition-bar" itemprop="nutrition" itemscope itemtype="https://schema.org/NutritionInformation">
+      <meta itemprop="servingSize" content="1/2 pizza (1 of 4 servings)">
+      <div class="nut-cell">
+        <span class="nut-val" itemprop="calories">410</span>
+        <span class="nut-label">kcal</span>
+      </div>
+      <div class="nut-cell">
+        <span class="nut-val" itemprop="proteinContent">14 g</span>
+        <span class="nut-label">Protein</span>
+      </div>
+      <div class="nut-cell">
+        <span class="nut-val" itemprop="carbohydrateContent">53 g</span>
+        <span class="nut-label">Carbs</span>
+      </div>
+      <div class="nut-cell">
+        <span class="nut-val" itemprop="fatContent">15 g</span>
+        <span class="nut-label">Fat</span>
+      </div>
+    </div>
+
+    <!-- ── Footer ── -->
+    <div class="footer-note">
+      <strong>Nutrition estimate</strong> based on Caputo Fioreglut (per 100 g: 357 kcal, 76 g carb, 5.1 g protein, 2.3 g fat), low-moisture mozzarella, crushed tomatoes, and olive oil. Values are approximate — actual macros depend on exact brand, topping amounts, and how much oil the pan absorbs. Cross-check against your specific products in MacroFactor for tighter logging.
+    </div>
+
+  </div>
+</article>
+
+</body>
+</html>
