@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instant Pot Chicken Stock — Fresh Drumsticks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1714;
+    --paper: #faf8f5;
+    --warm: #e8e2d9;
+    --accent: #8b6914;
+    --accent-light: #e6dcc5;
+    --muted: #7a7168;
+    --code-bg: #f0ece6;
+    --shadow: 0 1px 3px rgba(26,23,20,0.08);
+    --radius: 6px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: #eee9e0;
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .recipe-page {
+    max-width: 720px;
+    margin: 2rem auto;
+    background: var(--paper);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(26,23,20,0.10);
+    overflow: hidden;
+  }
+  .recipe-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2.5rem 2.5rem 2rem;
+    position: relative;
+  }
+  .recipe-header::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0; right: 0;
+    height: 12px;
+    background: linear-gradient(to bottom, rgba(26,23,20,0.06), transparent);
+  }
+  .recipe-header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.85rem;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.4rem;
+  }
+  .recipe-header .subtitle {
+    font-size: 0.9rem;
+    color: rgba(250,248,245,0.6);
+    font-weight: 400;
+  }
+  .recipe-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(250,248,245,0.12);
+  }
+  .meta-item { display: flex; flex-direction: column; gap: 0.15rem; }
+  .meta-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(250,248,245,0.45);
+    font-weight: 500;
+  }
+  .meta-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--paper);
+  }
+  .recipe-body { padding: 2rem 2.5rem 2.5rem; }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 2rem 0 0.75rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 2px solid var(--warm);
+  }
+  h2:first-child { margin-top: 0; }
+  h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    margin: 1.5rem 0 0.5rem;
+  }
+  .ing-section-title {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .ing-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+    font-size: 0.92rem;
+  }
+  .ing-qty {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--accent);
+    min-width: 60px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .ing-name { color: var(--ink); }
+  .note-box {
+    background: var(--code-bg);
+    border-left: 3px solid var(--accent);
+    padding: 0.65rem 0.9rem;
+    margin: 0.75rem 0;
+    font-size: 0.82rem;
+    color: var(--muted);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .steps { counter-reset: step; }
+  .step {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    align-items: start;
+  }
+  .step::before {
+    counter-increment: step;
+    content: counter(step);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--paper);
+    background: var(--accent);
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1rem;
+  }
+  .step p { font-size: 0.92rem; }
+  .nutrition-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 0.75rem;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--warm);
+  }
+  .nut-cell {
+    text-align: center;
+    padding: 0.7rem 0.5rem;
+  }
+  .nut-cell:not(:last-child) { border-right: 1px solid var(--warm); }
+  .nut-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--ink);
+    display: block;
+  }
+  .nut-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .footer-note {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--warm);
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  @media (max-width: 520px) {
+    .recipe-page { margin: 0; border-radius: 0; }
+    .recipe-header, .recipe-body { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .recipe-header h1 { font-size: 1.5rem; }
+    .nutrition-bar { grid-template-columns: repeat(2, 1fr); }
+    .nut-cell:nth-child(2) { border-right: none; }
+    .nut-cell:nth-child(1), .nut-cell:nth-child(2) { border-bottom: 1px solid var(--warm); }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "name": "Instant Pot Chicken Stock — Fresh Drumsticks",
+  "description": "Defatted chicken stock from fresh skin-on bone-in drumsticks, pressure cooked 70 minutes and reduced 30%. Unseasoned base ingredient. Yields ~2 quarts (8 cups).",
+  "author": { "@type": "Person", "name": "Home Recipe" },
+  "recipeYield": "8 cups",
+  "recipeCategory": "Base Ingredient",
+  "recipeCuisine": "American",
+  "keywords": "chicken stock, bone broth, instant pot, pressure cooker, defatted, unseasoned",
+  "prepTime": "PT10M",
+  "cookTime": "PT70M",
+  "totalTime": "PT26H",
+  "recipeIngredient": [
+    "2.5 lbs bone-in skin-on chicken drumsticks (1135 g)",
+    "Water to Instant Pot max fill line (~10 cups / 2.4 L)"
+  ],
+  "recipeInstructions": [
+    { "@type": "HowToStep", "text": "Place 2.5 lbs bone-in skin-on chicken drumsticks in 6 qt Instant Pot." },
+    { "@type": "HowToStep", "text": "Fill with water to max fill line." },
+    { "@type": "HowToStep", "text": "Seal and cook on high pressure for 70 minutes. Natural release." },
+    { "@type": "HowToStep", "text": "Remove chicken (reserve meat for separate use). Strain stock." },
+    { "@type": "HowToStep", "text": "Refrigerate overnight. Remove and discard fat cap." },
+    { "@type": "HowToStep", "text": "Return defatted stock to pot. Simmer uncovered until reduced by ~30%, yielding approximately 2 quarts." },
+    { "@type": "HowToStep", "text": "Transfer to 2 quart-size Ball jars. Refrigerate up to 5 days or freeze." }
+  ],
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "servingSize": "1 cup (240 ml)",
+    "calories": "40 kcal",
+    "carbohydrateContent": "0 g",
+    "proteinContent": "9 g",
+    "fatContent": "0.5 g",
+    "sodiumContent": "50 mg"
+  }
+}
+</script>
+</head>
+<body>
+
+<article class="recipe-page" itemscope itemtype="https://schema.org/Recipe">
+  <meta itemprop="recipeYield" content="8 cups">
+  <meta itemprop="prepTime" content="PT10M">
+  <meta itemprop="cookTime" content="PT70M">
+  <meta itemprop="totalTime" content="PT26H">
+
+  <header class="recipe-header">
+    <h1 itemprop="name">Instant Pot Chicken Stock</h1>
+    <div class="subtitle">Fresh Drumsticks · Defatted · Reduced · Unseasoned</div>
+    <div class="recipe-meta">
+      <div class="meta-item">
+        <span class="meta-label">Yield</span>
+        <span class="meta-value">~2 qt (8 cups)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Serving</span>
+        <span class="meta-value">1 cup (240 ml)</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Pressure</span>
+        <span class="meta-value">70 min</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Reduction</span>
+        <span class="meta-value">~30%</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Total</span>
+        <span class="meta-value">~24 h (incl. chill)</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="recipe-body">
+
+    <h2>Ingredients</h2>
+    <div class="ing-item"><span class="ing-qty">2.5 lbs</span><span class="ing-name" itemprop="recipeIngredient">bone-in skin-on chicken drumsticks (1135 g)</span></div>
+    <div class="ing-item"><span class="ing-qty">~10 cups</span><span class="ing-name" itemprop="recipeIngredient">water (to 6 qt Instant Pot max fill line)</span></div>
+
+    <div class="note-box">
+      No salt, vinegar, vegetables, or aromatics. This is a pure unseasoned base ingredient for logging purposes.
+    </div>
+
+    <h2>Method</h2>
+
+    <h3>Cook</h3>
+    <div class="steps" itemprop="recipeInstructions">
+      <div class="step"><p>Place drumsticks in 6 qt Instant Pot. Fill with water to max fill line.</p></div>
+      <div class="step"><p>Seal lid. High pressure, 70 minutes. Allow natural pressure release.</p></div>
+      <div class="step"><p>Remove chicken — reserve meat for separate use. Strain stock through mesh strainer.</p></div>
+    </div>
+
+    <h3>Defat</h3>
+    <div class="steps" style="counter-reset: step 3;">
+      <div class="step"><p>Refrigerate stock overnight (or until fully chilled). A solid fat cap will form on top.</p></div>
+      <div class="step"><p>Remove and discard the fat cap. This removes nearly all rendered fat from the skin.</p></div>
+    </div>
+
+    <h3>Reduce</h3>
+    <div class="steps" style="counter-reset: step 5;">
+      <div class="step"><p>Return defatted stock to pot. Simmer uncovered on stovetop until reduced by approximately 30%.</p></div>
+      <div class="step"><p>Final yield: ~2 quarts (8 cups). Transfer to 2 quart-size Ball jars.</p></div>
+    </div>
+
+    <div class="note-box">
+      <strong>The stock should gel when chilled.</strong> If it gels firmly, your protein content is at the higher end of the estimate. A loose gel means lower gelatin extraction — still good, but closer to the low end.
+    </div>
+
+    <h2>Nutrition <span style="font-family:'DM Sans';font-size:0.8rem;color:var(--muted);font-weight:400;">(per 1 cup / 240 ml serving)</span></h2>
+    <div class="nutrition-bar" itemprop="nutrition" itemscope itemtype="https://schema.org/NutritionInformation">
+      <meta itemprop="servingSize" content="1 cup (240 ml)">
+      <div class="nut-cell">
+        <span class="nut-val" itemprop="calories">40</span>
+        <span class="nut-label">kcal</span>
+      </div>
+      <div class="nut-cell">
+        <span class="nut-val" itemprop="proteinContent">9 g</span>
+        <span class="nut-label">Protein</span>
+      </div>
+      <div class="nut-cell">
+        <span class="nut-val" itemprop="carbohydrateContent">0 g</span>
+        <span class="nut-label">Carbs</span>
+      </div>
+      <div class="nut-cell">
+        <span class="nut-val" itemprop="fatContent">0.5 g</span>
+        <span class="nut-label">Fat</span>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <strong>How these numbers were derived:</strong> Fresh skin-on drumsticks at high pressure for 70 minutes extract significant collagen/gelatin into the liquid — comparable sources report 6–10 g protein per cup for pressure-cooked bone broth from fresh chicken. The 30% reduction step concentrates this further. Defatting via cold fat-cap removal eliminates most rendered fat (~95%), leaving trace residual fat. The 9 g protein estimate assumes a firmly gelling stock; if yours is a loose gel, 6–7 g/cup is more realistic. Zero carbs because there are no vegetables or aromatics in the pot. There is no peer-reviewed study that directly measures the macros of this exact preparation — these estimates are triangulated from USDA FoodData Central entries for home-prepared chicken stock (FDC #172884: 2.5 g protein/cup pre-reduction with vegetables) adjusted upward for the higher bone-to-water ratio, no-vegetable dilution, pressure extraction, and 30% reduction. The meat is removed and logged separately — none of its macros are counted here.
+    </div>
+
+  </div>
+</article>
+
+</body>
+</html>
