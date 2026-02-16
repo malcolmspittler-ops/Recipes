@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vietnamese High-Impact Chicken Thighs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1714;
+    --paper: #faf8f5;
+    --warm: #e8e2d9;
+    --accent: #a63d20;
+    --accent-light: #e6cec5;
+    --muted: #7a7168;
+    --code-bg: #f0ece6;
+    --radius: 6px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: #eee9e0;
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .recipe-page {
+    max-width: 720px;
+    margin: 2rem auto;
+    background: var(--paper);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(26,23,20,0.10);
+    overflow: hidden;
+  }
+  .recipe-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2.5rem 2.5rem 2rem;
+    position: relative;
+  }
+  .recipe-header::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0; right: 0;
+    height: 12px;
+    background: linear-gradient(to bottom, rgba(26,23,20,0.06), transparent);
+  }
+  .recipe-header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.85rem;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.4rem;
+  }
+  .recipe-header .subtitle {
+    font-size: 0.9rem;
+    color: rgba(250,248,245,0.6);
+    font-weight: 400;
+  }
+  .recipe-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(250,248,245,0.12);
+  }
+  .meta-item { display: flex; flex-direction: column; gap: 0.15rem; }
+  .meta-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(250,248,245,0.45);
+    font-weight: 500;
+  }
+  .meta-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--paper);
+  }
+  .recipe-body { padding: 2rem 2.5rem 2.5rem; }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin: 2rem 0 0.75rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 2px solid var(--warm);
+  }
+  h2:first-child { margin-top: 0; }
+  h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    margin: 1.5rem 0 0.5rem;
+  }
+  .ing-section-title {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    margin-top: 1rem;
+  }
+  .ing-section-title:first-of-type { margin-top: 0.25rem; }
+  .ing-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+    font-size: 0.92rem;
+  }
+  .ing-qty {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--accent);
+    min-width: 70px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .ing-name { color: var(--ink); }
+  .note-box {
+    background: var(--code-bg);
+    border-left: 3px solid var(--accent);
+    padding: 0.65rem 0.9rem;
+    margin: 0.75rem 0;
+    font-size: 0.82rem;
+    color: var(--muted);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .steps { counter-reset: step; }
+  .step {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    align-items: start;
+  }
+  .step::before {
+    counter-increment: step;
+    content: counter(step);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--paper);
+    background: var(--accent);
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1rem;
+  }
+  .step p { font-size: 0.92rem; }
+  .spec-list {
+    list-style: none;
+    padding: 0;
+  }
+  .spec-list li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.1rem;
+    font-size: 0.92rem;
+  }
+  .spec-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .check-list {
+    list-style: none;
+    padding: 0;
+  }
+  .check-list li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.4rem;
+    font-size: 0.92rem;
+  }
+  .check-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .trouble-grid {
+    display: grid;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+  .trouble-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--code-bg);
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+  }
+  .trouble-symptom { font-weight: 600; color: var(--ink); }
+  .trouble-fix { color: var(--muted); }
+  .nutrition-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 0.75rem;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--warm);
+  }
+  .nut-cell {
+    text-align: center;
+    padding: 0.7rem 0.5rem;
+  }
+  .nut-cell:not(:last-child) { border-right: 1px solid var(--warm); }
+  .nut-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--ink);
+    display: block;
+  }
+  .nut-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .footer-note {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--warm);
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  @media (max-width: 520px) {
+    .recipe-page { margin: 0; border-radius: 0; }
+    .recipe-header, .recipe-body { padding-left: 1.25rem; padding-right: 1.25rem; }
+    .recipe-header h1 { font-size: 1.5rem; }
+    .nutrition-bar { grid-template-columns: repeat(2, 1fr); }
+    .nut-cell:nth-child(2) { border-right: none; }
+    .nut-cell:nth-child(1), .nut-cell:nth-child(2) { border-bottom: 1px solid var(--warm); }
+    .trouble-row { grid-template-columns: 1fr; gap: 0.15rem; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "name": "Vietnamese High-Impact Chicken Thighs",
+  "description": "Bone-in skin-on chicken thighs with blender marinade (fish sauce, lemongrass, five-spice), pan-seared and convection finished. Protein-forward with crisp skin and deep umami.",
+  "author": { "@type": "Person", "name": "Home Recipe" },
+  "recipeYield": "6 servings",
+  "recipeCategory": "Main Course",
+  "recipeCuisine": "Vietnamese",
+  "keywords": "chicken thighs, Vietnamese, fish sauce, lemongrass, five-spice, pan sear, convection, crispy skin",
+  "prepTime": "PT20M",
+  "cookTime": "PT35M",
+  "totalTime": "PT28H",
+  "recipeIngredient": [
+    "4 lbs bone-in skin-on chicken thighs (1814 g)",
+    "6 tbsp fish sauce (90 ml)",
+    "2 tbsp low-sodium tamari (30 ml)",
+    "2 tbsp rice vinegar (30 ml)",
+    "Juice of 2 limes (~60 ml)",
+    "1 tbsp honey (21 g)",
+    "6 cloves garlic",
+    "2 medium shallots",
+    "2 tbsp chopped lemongrass, white part only",
+    "2 tsp fresh ginger",
+    "1 tsp MSG",
+    "1 tsp five-spice powder",
+    "2 tsp freshly cracked black pepper",
+    "1 tsp chili flakes",
+    "1-2 tsp neutral oil for searing"
+  ],
+  "recipeInstructions": [
+    {
+      "@type": "HowToSection",
+      "name": "Blender Marinade",
+      "itemListElement": [
+        { "@type": "HowToStep", "text": "Add all marinade ingredients (fish sauce, tamari, rice vinegar, lime juice, honey, garlic, shallots, lemongrass, ginger, MSG, five-spice, black pepper, chili flakes) to blender. Blend 30–45 seconds until smooth. Do not over-aerate." }
+      ]
+    },
+    {
+      "@type": "HowToSection",
+      "name": "Marinate",
+      "itemListElement": [
+        { "@type": "HowToStep", "text": "Loosen skin from meat with fingers. Rub marinade under skin and on meat side. Lightly wipe excess from outer skin." },
+        { "@type": "HowToStep", "text": "Refrigerate 4–24 hours." }
+      ]
+    },
+    {
+      "@type": "HowToSection",
+      "name": "Air-Dry",
+      "itemListElement": [
+        { "@type": "HowToStep", "text": "Remove thighs from marinade. Pat skin completely dry. Place uncovered on rack in fridge 4–12 hours." }
+      ]
+    },
+    {
+      "@type": "HowToSection",
+      "name": "Sear",
+      "itemListElement": [
+        { "@type": "HowToStep", "text": "Heavy skillet (cast iron ideal) over medium heat with 1–2 tsp neutral oil. Place thighs skin-side down. Do not move for 6–8 minutes." },
+        { "@type": "HowToStep", "text": "Flip and cook 2–3 minutes. Pour off excess rendered fat (leave thin film)." }
+      ]
+    },
+    {
+      "@type": "HowToSection",
+      "name": "Oven Finish",
+      "itemListElement": [
+        { "@type": "HowToStep", "text": "Transfer to oven at 400°F convection (actual ~375°F). Cook 20–25 minutes until internal temp reaches 180–185°F." },
+        { "@type": "HowToStep", "text": "Optional: broil 1–2 minutes if skin needs more crisp. Watch carefully." }
+      ]
+    },
+    {
+      "@type": "HowToSection",
+      "name": "Serve",
+      "itemListElement": [
+        { "@type": "HowToStep", "text": "Finish with fresh lime squeeze and herbs (mint, cilantro, or Thai basil). Serve one thigh with reduced drippings. No glaze needed." }
+      ]
+    }
+  ],
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "servingSize": "1 thigh (~270 g raw, bone-in)",
+    "calories": "310 kcal",
+    "carbohydrateContent": "3 g",
+    "proteinContent": "28 g",
+    "fatContent": "20 g",
+    "sodiumContent": "850 mg"
+  }
+}
+</script>
+</head>
+<body>
+
+<article class="recipe-page" itemscope itemtype="https://schema.org/Recipe">
+  <meta itemprop="recipeYield" content="6 servings">
+  <meta itemprop="prepTime" content="PT20M">
+  <meta itemprop="cookTime" content="PT35M">
+  <meta itemprop="totalTime" content="PT28H">
+
+  <header class="recipe-header">
+    <h1 itemprop="name">Vietnamese High-Impact Chicken Thighs</h1>
+    <div class="subtitle">Bone-In, Skin-On · Blender Marinade · Pan-Sear + Convection Finish</div>
+    <div class="recipe-meta">
+      <div class="meta-item">
+        <span class="meta-label">Serves</span>
+        <span class="meta-value">~6–8</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Active</span>
+        <span class="meta-value">~20 min</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Sear</span>
+        <span class="meta-value">8–11 min</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Oven</span>
+        <span class="meta-value">20–25 min</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Marinate</span>
+        <span class="meta-value">4–24 h</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Air-Dry</span>
+        <span class="meta-value">4–12 h</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="recipe-body">
+
+    <!-- ── Ingredients ── -->
+    <h2>Ingredients</h2>
+
+    <div class="ing-section-title">Chicken</div>
+    <div class="ing-item"><span class="ing-qty">4 lbs</span><span class="ing-name" itemprop="recipeIngredient">bone-in, skin-on chicken thighs</span></div>
+
+    <div class="ing-section-title">Blender Marinade — Liquids</div>
+    <div class="ing-item"><span class="ing-qty">6 tbsp</span><span class="ing-name" itemprop="recipeIngredient">fish sauce</span></div>
+    <div class="ing-item"><span class="ing-qty">2 tbsp</span><span class="ing-name" itemprop="recipeIngredient">low-sodium tamari</span></div>
+    <div class="ing-item"><span class="ing-qty">2 tbsp</span><span class="ing-name" itemprop="recipeIngredient">rice vinegar</span></div>
+    <div class="ing-item"><span class="ing-qty">2 limes</span><span class="ing-name" itemprop="recipeIngredient">juiced (~60 ml)</span></div>
+    <div class="ing-item"><span class="ing-qty">1 tbsp</span><span class="ing-name" itemprop="recipeIngredient">honey</span></div>
+
+    <div class="ing-section-title">Blender Marinade — Aromatics</div>
+    <div class="ing-item"><span class="ing-qty">6 cloves</span><span class="ing-name" itemprop="recipeIngredient">garlic</span></div>
+    <div class="ing-item"><span class="ing-qty">2 medium</span><span class="ing-name" itemprop="recipeIngredient">shallots</span></div>
+    <div class="ing-item"><span class="ing-qty">2 tbsp</span><span class="ing-name" itemprop="recipeIngredient">chopped lemongrass (white part only)</span></div>
+    <div class="ing-item"><span class="ing-qty">2 tsp</span><span class="ing-name" itemprop="recipeIngredient">fresh ginger</span></div>
+
+    <div class="ing-section-title">Blender Marinade — Maximizers</div>
+    <div class="ing-item"><span class="ing-qty">1 tsp</span><span class="ing-name" itemprop="recipeIngredient">MSG</span></div>
+    <div class="ing-item"><span class="ing-qty">1 tsp</span><span class="ing-name" itemprop="recipeIngredient">five-spice powder</span></div>
+    <div class="ing-item"><span class="ing-qty">2 tsp</span><span class="ing-name" itemprop="recipeIngredient">freshly cracked black pepper</span></div>
+    <div class="ing-item"><span class="ing-qty">1 tsp</span><span class="ing-name" itemprop="recipeIngredient">chili flakes</span></div>
+
+    <div class="ing-section-title">Cooking</div>
+    <div class="ing-item"><span class="ing-qty">1–2 tsp</span><span class="ing-name" itemprop="recipeIngredient">neutral oil (for searing)</span></div>
+
+    <div class="ing-section-title">Serving (optional)</div>
+    <div class="ing-item"><span class="ing-qty"></span><span class="ing-name">Fresh lime, mint, cilantro, or Thai basil</span></div>
+
+    <!-- ── Marinade ── -->
+    <h2>Blender Marinade</h2>
+    <div class="steps">
+      <div class="step"><p>Add all marinade ingredients to blender. Blend 30–45 seconds until smooth. Do not over-aerate.</p></div>
+    </div>
+
+    <!-- ── Marinate ── -->
+    <h2>Marinate</h2>
+    <div class="steps">
+      <div class="step"><p>Loosen skin from meat with fingers.</p></div>
+      <div class="step"><p>Rub marinade under skin and on meat side.</p></div>
+      <div class="step"><p>Lightly wipe excess from outer skin.</p></div>
+      <div class="step"><p>Refrigerate <strong>4–24 hours</strong>.</p></div>
+    </div>
+
+    <!-- ── Air-Dry ── -->
+    <h2>Air-Dry <span style="font-family:'DM Sans';font-size:0.8rem;color:var(--muted);font-weight:400;">(Critical for Crisp Skin)</span></h2>
+    <div class="steps" style="counter-reset: step 0;">
+      <div class="step"><p>Remove thighs from marinade.</p></div>
+      <div class="step"><p>Pat skin completely dry.</p></div>
+      <div class="step"><p>Place uncovered on rack in fridge <strong>4–12 hours</strong>.</p></div>
+    </div>
+
+    <!-- ── Sear ── -->
+    <h2>Sear</h2>
+    <ul class="spec-list">
+      <li>Heavy skillet (cast iron ideal), medium heat</li>
+      <li>1–2 tsp neutral oil</li>
+      <li>Place thighs <strong>skin-side down</strong></li>
+      <li>Do not move for <strong>6–8 minutes</strong></li>
+      <li>Flip and cook <strong>2–3 minutes</strong></li>
+      <li>Pour off excess rendered fat (leave thin film)</li>
+    </ul>
+
+    <!-- ── Oven Finish ── -->
+    <h2>Oven Finish</h2>
+
+    <div class="note-box">
+      Your convection oven runs ~25°F lower than the set temperature.
+    </div>
+
+    <ul class="spec-list">
+      <li>Set: <strong>400°F convection</strong> (actual ~375°F)</li>
+      <li>Cook <strong>20–25 minutes</strong></li>
+      <li>Pull at <strong>180–185°F</strong> internal temperature</li>
+    </ul>
+
+    <!-- ── Adjustments ── -->
+    <h2>Adjustments</h2>
+    <div class="trouble-grid">
+      <div class="trouble-row">
+        <span class="trouble-symptom">Skin browns too quickly</span>
+        <span class="trouble-fix">Lower to 350°F convection (set 375)</span>
+      </div>
+      <div class="trouble-row">
+        <span class="trouble-symptom">Skin needs more crisp at end</span>
+        <span class="trouble-fix">Broil 1–2 min, watch carefully</span>
+      </div>
+    </div>
+
+    <!-- ── Serving ── -->
+    <h2>Serving</h2>
+    <ul class="spec-list">
+      <li>Fresh lime squeeze</li>
+      <li>Mint, cilantro, or Thai basil</li>
+      <li>One thigh with reduced drippings</li>
+      <li>No glaze needed</li>
+    </ul>
+
+    <!-- ── Notes ── -->
+    <div class="note-box" style="margin-top: 1.5rem;">
+      <strong>Do not pull at 165°F.</strong> Dark meat improves significantly between 175–185°F as collagen softens and fat fully renders.
+    </div>
+
+    <!-- ── Nutrition ── -->
+    <h2>Nutrition <span style="font-family:'DM Sans';font-size:0.8rem;color:var(--muted);font-weight:400;">(per thigh, 1 of ~6 servings)</span></h2>
+    <div class="nutrition-bar" itemprop="nutrition" itemscope itemtype="https://schema.org/NutritionInformation">
+      <meta itemprop="servingSize" content="1 thigh (~270 g raw, bone-in)">
+      <div class="nut-cell">
+        <span class="nut-val" itemprop="calories">310</span>
+        <span class="nut-label">kcal</span>
+      </div>
+      <div class="nut-cell">
+        <span class="nut-val" itemprop="proteinContent">28 g</span>
+        <span class="nut-label">Protein</span>
+      </div>
+      <div class="nut-cell">
+        <span class="nut-val" itemprop="carbohydrateContent">3 g</span>
+        <span class="nut-label">Carbs</span>
+      </div>
+      <div class="nut-cell">
+        <span class="nut-val" itemprop="fatContent">20 g</span>
+        <span class="nut-label">Fat</span>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <strong>Nutrition estimate</strong> based on USDA data for bone-in skin-on chicken thigh (cooked, skin eaten), with marinade ingredients distributed across ~6 thighs. Fat accounts for skin rendered during sear — actual fat depends on how much you pour off. The marinade contributes most of the sodium (~850 mg/serving, primarily from fish sauce and tamari) and minimal carbs (~3 g from honey, shallots, and lime juice). Bone weight is excluded. For tighter MacroFactor logging, weigh individual thighs after cooking and log by weight — a cooked bone-in thigh typically yields ~60–65% edible meat+skin relative to raw weight.
+    </div>
+
+  </div>
+</article>
+
+</body>
+</html>
