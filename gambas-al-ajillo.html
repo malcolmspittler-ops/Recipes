@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gambas al Ajillo — Spanish Garlic Shrimp over GF Pasta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "name": "Gambas al Ajillo — Spanish Garlic Shrimp over GF Pasta",
+  "description": "Large shrimp cooked in olive oil with thin-sliced garlic, smoked paprika, and árbol chili. Tossed with GF pasta and emulsified with pasta water into a light sauce. Five core ingredients — restraint is the technique.",
+  "recipeYield": "4 servings",
+  "recipeCategory": "Main Course",
+  "recipeCuisine": "Spanish",
+  "keywords": "gambas al ajillo, Spanish, garlic shrimp, gluten-free pasta, high protein, olive oil, smoked paprika",
+  "prepTime": "PT10M",
+  "cookTime": "PT20M",
+  "totalTime": "PT30M",
+  "recipeIngredient": [
+    "1.5 lb large shrimp, 16-20 count, peeled and deveined",
+    "8 cloves garlic, very thinly sliced",
+    "0.33 cup good olive oil",
+    "1 tsp smoked paprika",
+    "2 dried arbol chilis, crumbled, or 0.5 tsp chili flakes",
+    "0.25 cup dry sherry or dry white wine",
+    "salt",
+    "12 oz gluten-free pasta, Banza chickpea or Jovial brown rice",
+    "1 cup reserved pasta water",
+    "large handful flat-leaf parsley, roughly chopped",
+    "lemon wedges for serving"
+  ],
+  "recipeInstructions": [
+    { "@type": "HowToStep", "text": "Cook pasta in well-salted water until just al dente. Reserve 1 full cup of pasta water before draining. Set pasta aside." },
+    { "@type": "HowToStep", "text": "Heat olive oil in a wide skillet over medium-low. Add sliced garlic and crumbled chilis. Cook slowly 3-4 minutes, stirring, until garlic is golden at the edges but not brown. This is the flavor base of the dish — watch it carefully, garlic burns fast and becomes bitter." },
+    { "@type": "HowToStep", "text": "Increase heat to medium-high. Add smoked paprika, stir 30 seconds until fragrant." },
+    { "@type": "HowToStep", "text": "Add shrimp in a single layer. Season with salt. Cook 90 seconds per side — just until pink and barely opaque. Add sherry, let it sizzle and reduce 30 seconds." },
+    { "@type": "HowToStep", "text": "Add drained pasta to the pan. Add 0.5 cup pasta water. Toss vigorously over medium heat 1-2 minutes until oil and water emulsify into a light coating sauce. Add more pasta water tablespoon by tablespoon if it looks dry or clumpy." },
+    { "@type": "HowToStep", "text": "Off heat, add parsley. Taste and adjust salt. Serve immediately with lemon wedges." }
+  ],
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "servingSize": "1/4 of recipe with Banza pasta",
+    "calories": "520 kcal",
+    "proteinContent": "45 g",
+    "carbohydrateContent": "48 g",
+    "fatContent": "16 g",
+    "saturatedFatContent": "2 g",
+    "sodiumContent": "580 mg"
+  }
+}
+</script>
+<style>
+  :root {
+    --ink: #1a1714;
+    --paper: #faf8f5;
+    --warm: #e8e2d9;
+    --accent: #c4860a;
+    --accent-dark: #8a5c05;
+    --accent-light: #fdf3e0;
+    --muted: #7a7168;
+    --radius: 6px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: #1a1400;
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .recipe-page {
+    max-width: 720px;
+    margin: 2rem auto;
+    background: var(--paper);
+    border-radius: 12px;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.5);
+    overflow: hidden;
+  }
+  .recipe-header {
+    background: linear-gradient(135deg, #c4860a 0%, #8a5c05 55%, #4a3002 100%);
+    color: white;
+    padding: 2.5rem 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .recipe-header::before {
+    content: 'AJILLO';
+    position: absolute;
+    right: -5px;
+    bottom: -10px;
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.05);
+    letter-spacing: -0.04em;
+    pointer-events: none;
+    line-height: 1;
+  }
+  .recipe-header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.85rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.3rem;
+    position: relative;
+  }
+  .recipe-header .subtitle {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 1.4rem;
+    position: relative;
+  }
+  .recipe-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    position: relative;
+  }
+  .meta-item {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: var(--radius);
+    padding: 0.4rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .meta-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.07em; color: rgba(255,255,255,0.38); }
+  .meta-value { font-size: 0.85rem; font-weight: 600; color: white; }
+  .recipe-body { padding: 2rem 2.5rem 2.5rem; }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    margin: 2rem 0 0.9rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--warm);
+  }
+  h3 {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--accent-dark);
+    font-weight: 700;
+    margin: 1.4rem 0 0.6rem;
+  }
+  .ing-group { margin-bottom: 1rem; }
+  .ing-item {
+    display: flex;
+    gap: 0.8rem;
+    padding: 0.32rem 0;
+    border-bottom: 1px solid var(--warm);
+    font-size: 0.92rem;
+    align-items: baseline;
+  }
+  .ing-item:last-child { border-bottom: none; }
+  .ing-qty {
+    min-width: 90px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--accent-dark);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .steps { counter-reset: step; }
+  .step {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+  .step::before {
+    counter-increment: step;
+    content: counter(step);
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .note-box {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.87rem;
+    margin: 1rem 0;
+    line-height: 1.5;
+  }
+  .key-technique {
+    background: #4a3002;
+    color: white;
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+    margin: 1.2rem 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .key-technique strong {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 0.4rem;
+  }
+  .pasta-rec {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin: 0.8rem 0;
+  }
+  .pasta-option {
+    background: var(--warm);
+    border-radius: var(--radius);
+    padding: 0.6rem 0.9rem;
+    font-size: 0.85rem;
+    flex: 1;
+    min-width: 160px;
+  }
+  .pasta-option strong { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.2rem; }
+  .pasta-option.avoid { opacity: 0.5; text-decoration: line-through; }
+  .nutrition-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0 0.5rem; }
+  .nut-cell {
+    background: var(--warm);
+    border-radius: var(--radius);
+    padding: 0.6rem 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 70px;
+  }
+  .nut-val { font-size: 1.2rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--ink); }
+  .nut-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-top: 0.1rem; }
+  .nut-cell.highlight { background: var(--accent-light); }
+  .nut-cell.highlight .nut-val { color: var(--accent-dark); }
+  .footer-note {
+    font-size: 0.81rem;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--warm);
+  }
+  @media (max-width: 600px) {
+    .recipe-page { margin: 0; border-radius: 0; }
+    .recipe-header, .recipe-body { padding: 1.5rem; }
+    .recipe-header::before { display: none; }
+  }
+</style>
+</head>
+<body>
+<article class="recipe-page" itemscope itemtype="https://schema.org/Recipe">
+  <meta itemprop="recipeYield" content="4 servings">
+  <meta itemprop="prepTime" content="PT10M">
+  <meta itemprop="cookTime" content="PT20M">
+
+  <header class="recipe-header">
+    <h1 itemprop="name">Gambas al Ajillo</h1>
+    <div class="subtitle">Spanish Garlic Shrimp · Over GF Pasta · 30 Minutes</div>
+    <div class="recipe-meta">
+      <div class="meta-item"><span class="meta-label">Serves</span><span class="meta-value">4</span></div>
+      <div class="meta-item"><span class="meta-label">Total Time</span><span class="meta-value">~30 min</span></div>
+      <div class="meta-item"><span class="meta-label">Heat</span><span class="meta-value">🌶 Medium</span></div>
+      <div class="meta-item"><span class="meta-label">Sat Fat</span><span class="meta-value">Very Low</span></div>
+      <div class="meta-item"><span class="meta-label">Gluten-Free</span><span class="meta-value">✓ GF Pasta</span></div>
+    </div>
+  </header>
+
+  <div class="recipe-body">
+
+    <div class="key-technique">
+      <strong>The only rule — restraint</strong>
+      Gambas al ajillo is five ingredients. The temptation is to add things — lemon zest, cherry tomatoes, butter, herbs on top of herbs. Resist it. The dish works because the garlic-infused olive oil has nowhere to hide. Quality olive oil and properly cooked garlic are everything here.
+    </div>
+
+    <h2>Ingredients</h2>
+
+    <h3>Shrimp</h3>
+    <div class="ing-group">
+      <div class="ing-item"><span class="ing-qty">1.5 lb</span><span itemprop="recipeIngredient">large shrimp, 16-20 count, peeled and deveined</span></div>
+      <div class="ing-item"><span class="ing-qty">8 cloves</span><span itemprop="recipeIngredient">garlic, very thinly sliced</span></div>
+      <div class="ing-item"><span class="ing-qty">⅓ cup</span><span itemprop="recipeIngredient">good olive oil</span></div>
+      <div class="ing-item"><span class="ing-qty">1 tsp</span><span itemprop="recipeIngredient">smoked paprika (pimentón de la Vera if available)</span></div>
+      <div class="ing-item"><span class="ing-qty">2</span><span itemprop="recipeIngredient">dried árbol chilis, crumbled (or ½ tsp chili flakes)</span></div>
+      <div class="ing-item"><span class="ing-qty">¼ cup</span><span itemprop="recipeIngredient">dry sherry (Fino or Manzanilla) or dry white wine</span></div>
+      <div class="ing-item"><span class="ing-qty">—</span><span itemprop="recipeIngredient">salt</span></div>
+    </div>
+
+    <h3>Pasta</h3>
+    <div class="ing-group">
+      <div class="ing-item"><span class="ing-qty">12 oz</span><span itemprop="recipeIngredient">gluten-free pasta — Banza chickpea or Jovial brown rice (see note)</span></div>
+      <div class="ing-item"><span class="ing-qty">1 cup</span><span itemprop="recipeIngredient">reserved pasta water</span></div>
+    </div>
+
+    <h3>Finish</h3>
+    <div class="ing-group">
+      <div class="ing-item"><span class="ing-qty">large handful</span><span itemprop="recipeIngredient">flat-leaf parsley, roughly chopped</span></div>
+      <div class="ing-item"><span class="ing-qty">—</span><span itemprop="recipeIngredient">lemon wedges for serving</span></div>
+    </div>
+
+    <div class="note-box">
+      <strong>GF pasta — which brand matters here.</strong> Banza chickpea pasta holds its texture and adds ~14g protein per serving on top of the shrimp. Jovial brown rice is milder-tasting and closer to conventional pasta texture. Avoid corn-based GF pasta — it goes mushy when tossed in a hot pan and won't hold the sauce.
+    </div>
+
+    <h2>Method</h2>
+
+    <h3>1 — Cook Pasta</h3>
+    <div class="steps" itemprop="recipeInstructions">
+      <div class="step"><p>Bring a large pot of water to a boil. Salt it generously — it should taste like the sea. Cook pasta until just al dente, following package timing but checking 1 minute early.</p></div>
+      <div class="step"><p><strong>Before draining</strong>, scoop out at least 1 full cup of pasta water and set aside. Drain pasta and set aside. Don't rinse it.</p></div>
+    </div>
+
+    <h3>2 — Build the Garlic Oil</h3>
+    <div class="steps" itemprop="recipeInstructions">
+      <div class="step"><p>Add olive oil to a wide skillet over <strong>medium-low</strong>. Add sliced garlic and crumbled chilis. Cook slowly, stirring frequently, <strong>3–4 minutes</strong> until the garlic turns golden at the edges but remains pale in the center. This is the flavor base — the difference between golden and burnt garlic is about 20 seconds. Watch it.</p></div>
+      <div class="step"><p>Add smoked paprika. Stir constantly for 30 seconds until fragrant — paprika burns quickly in hot oil.</p></div>
+    </div>
+
+    <h3>3 — Cook Shrimp</h3>
+    <div class="steps" itemprop="recipeInstructions">
+      <div class="step"><p>Increase heat to medium-high. Add shrimp in a single layer. Season with salt. Cook <strong>90 seconds per side</strong> — just until pink and barely opaque. Do not overcook. The shrimp will continue cooking when you add the pasta.</p></div>
+      <div class="step"><p>Add sherry. Let it sizzle and reduce for 30 seconds, scraping up any bits from the pan.</p></div>
+    </div>
+
+    <h3>4 — Emulsify &amp; Finish</h3>
+    <div class="steps" itemprop="recipeInstructions">
+      <div class="step"><p>Add drained pasta to the pan. Pour in ½ cup of reserved pasta water. Toss everything together vigorously over medium heat for <strong>1–2 minutes</strong>. The starchy water and olive oil will emulsify into a light, glossy sauce that coats the pasta rather than pooling at the bottom.</p></div>
+      <div class="step"><p>If the pasta looks dry or the sauce breaks, add more pasta water a tablespoon at a time while tossing. If it looks wet, keep cooking and tossing — it will tighten.</p></div>
+      <div class="step"><p>Off heat, add parsley. Taste and adjust salt. Serve immediately — this dish does not hold. Squeeze lemon over each portion at the table.</p></div>
+    </div>
+
+    <div class="note-box">
+      <strong>Don't make this ahead.</strong> The emulsified sauce breaks as it cools and the GF pasta continues absorbing liquid and softening. This is a genuine 30-minute dish that should go straight from pan to plate. If feeding a family at staggered times, hold the shrimp separately and combine per portion to order.
+    </div>
+
+    <h2>Nutrition <span style="font-family:'DM Sans';font-size:0.78rem;color:var(--muted);font-weight:400;">(per serving · 1/4 recipe · with Banza chickpea pasta)</span></h2>
+    <div class="nutrition-bar" itemprop="nutrition" itemscope itemtype="https://schema.org/NutritionInformation">
+      <meta itemprop="servingSize" content="1/4 of recipe with Banza pasta">
+      <div class="nut-cell highlight"><span class="nut-val" itemprop="calories">520</span><span class="nut-label">kcal</span></div>
+      <div class="nut-cell highlight"><span class="nut-val" itemprop="proteinContent">45g</span><span class="nut-label">Protein</span></div>
+      <div class="nut-cell"><span class="nut-val" itemprop="carbohydrateContent">48g</span><span class="nut-label">Carbs</span></div>
+      <div class="nut-cell"><span class="nut-val" itemprop="fatContent">16g</span><span class="nut-label">Fat</span></div>
+      <div class="nut-cell"><span class="nut-val" itemprop="saturatedFatContent">2g</span><span class="nut-label">Sat Fat</span></div>
+      <div class="nut-cell"><span class="nut-val" itemprop="sodiumContent">580mg</span><span class="nut-label">Sodium</span></div>
+    </div>
+
+    <div class="footer-note">
+      <strong>Nutrition estimate</strong> based on USDA FoodData Central data for large shrimp (cooked) and Banza chickpea pasta label data (13g protein per 2oz dry serving). Banza adds approximately 14g protein per serving over conventional pasta, which is why it's specifically recommended here — the total 45g protein per serving is partly dependent on it. With Jovial brown rice pasta, protein drops to approximately 36g and carbs remain similar. Fat is entirely from olive oil — ⅓ cup divided across 4 servings is approximately 20g oil per serving, of which most remains in the pan rather than coating the pasta; actual consumed fat is estimated at 16g. Saturated fat is negligible — olive oil is predominantly monounsaturated.
+    </div>
+
+  </div>
+</article>
+</body>
+</html>

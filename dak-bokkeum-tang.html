@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dak Bokkeum Tang — Korean Braised Spicy Chicken with Potatoes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "name": "Dak Bokkeum Tang — Korean Braised Spicy Chicken with Potatoes",
+  "description": "Bone-in chicken thighs and drumsticks braised stovetop in a gochujang-tamari sauce with Yukon Gold potatoes. Reduced to a thick, sticky glaze. Medium heat.",
+  "recipeYield": "4 servings",
+  "recipeCategory": "Main Course",
+  "recipeCuisine": "Korean",
+  "keywords": "Korean, braised chicken, gochujang, spicy, gluten-free, bone-in, potatoes, dak bokkeum tang",
+  "prepTime": "PT10M",
+  "cookTime": "PT50M",
+  "totalTime": "PT60M",
+  "recipeIngredient": [
+    "3 lb bone-in chicken thighs and drumsticks",
+    "1 Tbsp neutral oil",
+    "2 Tbsp gochujang",
+    "1 Tbsp tamari",
+    "1 tsp gochugaru (Korean chili flakes)",
+    "1 Tbsp honey",
+    "6 cloves garlic, minced",
+    "1 Tbsp fresh ginger, grated",
+    "1 tsp sesame oil",
+    "0.5 cup chicken stock",
+    "1 lb Yukon Gold potatoes, cut into 1.5-inch chunks",
+    "1 medium onion, cut into wedges",
+    "2 scallions, sliced",
+    "1 tsp sesame seeds"
+  ],
+  "recipeInstructions": [
+    { "@type": "HowToStep", "text": "Mix gochujang, tamari, gochugaru, honey, garlic, ginger, and sesame oil together in a bowl. Set aside." },
+    { "@type": "HowToStep", "text": "Heat oil in a wide heavy pot or deep skillet over medium-high. Sear chicken skin-side down 4-5 minutes until deep golden. Flip, cook 2 minutes more. Remove chicken." },
+    { "@type": "HowToStep", "text": "Pour off all but 1 tsp fat from pan. Add onion wedges, cook 2 minutes until softened at edges." },
+    { "@type": "HowToStep", "text": "Return chicken to pot. Pour sauce over everything. Add stock. Bring to a boil." },
+    { "@type": "HowToStep", "text": "Add potato chunks, tucking into the liquid. Cover and reduce to medium-low. Cook 25 minutes." },
+    { "@type": "HowToStep", "text": "Uncover. Increase heat to medium. Cook 10-15 minutes more, turning chicken and potatoes occasionally, until sauce reduces to a thick glaze coating everything and potatoes are fully tender." },
+    { "@type": "HowToStep", "text": "Finish with sliced scallions and sesame seeds. Serve from the pot." }
+  ],
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "servingSize": "1/4 of recipe (edible meat + potatoes)",
+    "calories": "420 kcal",
+    "proteinContent": "38 g",
+    "carbohydrateContent": "28 g",
+    "fatContent": "14 g",
+    "saturatedFatContent": "4 g",
+    "sodiumContent": "780 mg"
+  }
+}
+</script>
+<style>
+  :root {
+    --ink: #1a1714;
+    --paper: #faf8f5;
+    --warm: #e8e2d9;
+    --accent: #c0392b;
+    --accent-light: #fdecea;
+    --accent-2: #e67e22;
+    --muted: #7a7168;
+    --radius: 6px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: #1a0a08;
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .recipe-page {
+    max-width: 720px;
+    margin: 2rem auto;
+    background: var(--paper);
+    border-radius: 12px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    overflow: hidden;
+  }
+  .recipe-header {
+    background: linear-gradient(135deg, #c0392b 0%, #922b21 60%, #641e16 100%);
+    color: white;
+    padding: 2.5rem 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .recipe-header::before {
+    content: '닭볶음탕';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.07);
+    letter-spacing: -0.05em;
+    pointer-events: none;
+    line-height: 1;
+  }
+  .recipe-header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.3rem;
+    position: relative;
+  }
+  .recipe-header .subtitle {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 1.4rem;
+    position: relative;
+  }
+  .recipe-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    position: relative;
+  }
+  .meta-item {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: var(--radius);
+    padding: 0.4rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .meta-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: rgba(255,255,255,0.45);
+  }
+  .meta-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+  }
+  .recipe-body { padding: 2rem 2.5rem 2.5rem; }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    margin: 2rem 0 0.9rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--warm);
+  }
+  h3 {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 1.4rem 0 0.6rem;
+  }
+  .ing-group { margin-bottom: 1rem; }
+  .ing-item {
+    display: flex;
+    gap: 0.8rem;
+    padding: 0.32rem 0;
+    border-bottom: 1px solid var(--warm);
+    font-size: 0.92rem;
+    align-items: baseline;
+  }
+  .ing-item:last-child { border-bottom: none; }
+  .ing-qty {
+    min-width: 90px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .steps { counter-reset: step; }
+  .step {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+  .step::before {
+    counter-increment: step;
+    content: counter(step);
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .note-box {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.87rem;
+    margin: 1rem 0;
+    line-height: 1.5;
+  }
+  .heat-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: var(--accent-light);
+    border: 1px solid rgba(192,57,43,0.2);
+    border-radius: 20px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .nutrition-bar {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1rem 0 0.5rem;
+  }
+  .nut-cell {
+    background: var(--warm);
+    border-radius: var(--radius);
+    padding: 0.6rem 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 70px;
+  }
+  .nut-val {
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--ink);
+  }
+  .nut-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-top: 0.1rem;
+  }
+  .nut-cell.highlight { background: var(--accent-light); }
+  .nut-cell.highlight .nut-val { color: var(--accent); }
+  .footer-note {
+    font-size: 0.81rem;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--warm);
+  }
+  @media (max-width: 600px) {
+    .recipe-page { margin: 0; border-radius: 0; }
+    .recipe-header, .recipe-body { padding: 1.5rem; }
+    .recipe-header::before { display: none; }
+  }
+</style>
+</head>
+<body>
+<article class="recipe-page" itemscope itemtype="https://schema.org/Recipe">
+  <meta itemprop="recipeYield" content="4 servings">
+  <meta itemprop="prepTime" content="PT10M">
+  <meta itemprop="cookTime" content="PT50M">
+
+  <header class="recipe-header">
+    <h1 itemprop="name">Dak Bokkeum Tang</h1>
+    <div class="subtitle">Korean Braised Spicy Chicken with Potatoes · 닭볶음탕</div>
+    <div class="recipe-meta">
+      <div class="meta-item">
+        <span class="meta-label">Serves</span>
+        <span class="meta-value">4</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Method</span>
+        <span class="meta-value">Stovetop Braise</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Active Time</span>
+        <span class="meta-value">~45 min</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Heat</span>
+        <span class="meta-value">🌶 Medium</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Gluten-Free</span>
+        <span class="meta-value">✓ Tamari</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="recipe-body">
+
+    <h2>Ingredients</h2>
+
+    <h3>Chicken</h3>
+    <div class="ing-group">
+      <div class="ing-item"><span class="ing-qty">3 lb</span><span itemprop="recipeIngredient">bone-in chicken thighs and drumsticks</span></div>
+      <div class="ing-item"><span class="ing-qty">1 Tbsp</span><span itemprop="recipeIngredient">neutral oil</span></div>
+    </div>
+
+    <h3>Sauce</h3>
+    <div class="ing-group">
+      <div class="ing-item"><span class="ing-qty">2 Tbsp</span><span itemprop="recipeIngredient">gochujang</span></div>
+      <div class="ing-item"><span class="ing-qty">1 Tbsp</span><span itemprop="recipeIngredient">tamari (gluten-free soy sauce)</span></div>
+      <div class="ing-item"><span class="ing-qty">1 tsp</span><span itemprop="recipeIngredient">gochugaru (Korean chili flakes)</span></div>
+      <div class="ing-item"><span class="ing-qty">1 Tbsp</span><span itemprop="recipeIngredient">honey</span></div>
+      <div class="ing-item"><span class="ing-qty">6 cloves</span><span itemprop="recipeIngredient">garlic, minced</span></div>
+      <div class="ing-item"><span class="ing-qty">1 Tbsp</span><span itemprop="recipeIngredient">fresh ginger, grated</span></div>
+      <div class="ing-item"><span class="ing-qty">1 tsp</span><span itemprop="recipeIngredient">sesame oil</span></div>
+      <div class="ing-item"><span class="ing-qty">½ cup</span><span itemprop="recipeIngredient">chicken stock</span></div>
+    </div>
+
+    <h3>Vegetables</h3>
+    <div class="ing-group">
+      <div class="ing-item"><span class="ing-qty">1 lb</span><span itemprop="recipeIngredient">Yukon Gold potatoes, cut into 1.5-inch chunks</span></div>
+      <div class="ing-item"><span class="ing-qty">1 medium</span><span itemprop="recipeIngredient">onion, cut into wedges</span></div>
+    </div>
+
+    <h3>Finish</h3>
+    <div class="ing-group">
+      <div class="ing-item"><span class="ing-qty">2</span><span itemprop="recipeIngredient">scallions, sliced</span></div>
+      <div class="ing-item"><span class="ing-qty">1 tsp</span><span itemprop="recipeIngredient">sesame seeds</span></div>
+    </div>
+
+    <div class="note-box">
+      <strong>Use Yukon Gold, not Russet.</strong> Waxy potatoes hold their shape through the braise. Russets will dissolve into the sauce — not necessarily bad, but not what this dish is going for. Check your gochujang label — some brands contain wheat. Wholly Gochujang and Chung Jung One make GF-verified versions.
+    </div>
+
+    <h2>Method</h2>
+
+    <h3>1 — Sauce &amp; Sear</h3>
+    <div class="steps" itemprop="recipeInstructions">
+      <div class="step"><p>Combine gochujang, tamari, gochugaru, honey, garlic, ginger, and sesame oil in a bowl. Mix well and set aside.</p></div>
+      <div class="step"><p>Heat oil in a wide heavy pot or deep skillet over medium-high. Sear chicken skin-side down <strong>4–5 minutes</strong> until deep golden — resist moving it. Flip, cook 2 minutes more. Remove chicken to a plate.</p></div>
+      <div class="step"><p>Pour off all but 1 tsp of rendered fat from the pan.</p></div>
+    </div>
+
+    <h3>2 — Build &amp; Braise</h3>
+    <div class="steps" itemprop="recipeInstructions">
+      <div class="step"><p>Add onion wedges to the pan over medium heat. Cook 2 minutes until edges soften.</p></div>
+      <div class="step"><p>Return chicken to pot. Pour sauce over everything. Add stock. Bring to a boil, scraping up any browned bits.</p></div>
+      <div class="step"><p>Add potato chunks, tucking them down into the liquid. Cover tightly and reduce heat to medium-low. Cook <strong>25 minutes</strong>.</p></div>
+    </div>
+
+    <h3>3 — Reduce &amp; Glaze</h3>
+    <div class="steps" itemprop="recipeInstructions">
+      <div class="step"><p>Uncover. Increase heat to medium. Cook <strong>10–15 minutes more</strong>, turning chicken and potatoes every few minutes, until the sauce reduces to a thick, glossy glaze that coats everything. The potatoes should be completely tender and the chicken pulling from the bone.</p></div>
+      <div class="step"><p>Scatter scallions and sesame seeds over the top. Serve directly from the pot.</p></div>
+    </div>
+
+    <div class="note-box">
+      <strong>MacroFactor logging note:</strong> Log bone-in chicken by edible yield — roughly 60–65% of raw bone-in thigh/drumstick weight is edible meat. A 3 lb raw portion yields approximately 1.75–1.9 lb of edible meat after cooking. Weigh edible portions individually if tracking tightly.
+    </div>
+
+    <h2>Nutrition <span style="font-family:'DM Sans';font-size:0.78rem;color:var(--muted);font-weight:400;">(per serving · 1/4 recipe · edible meat + potatoes)</span></h2>
+    <div class="nutrition-bar" itemprop="nutrition" itemscope itemtype="https://schema.org/NutritionInformation">
+      <meta itemprop="servingSize" content="1/4 of recipe, edible meat + potatoes">
+      <div class="nut-cell highlight">
+        <span class="nut-val" itemprop="calories">420</span>
+        <span class="nut-label">kcal</span>
+      </div>
+      <div class="nut-cell highlight">
+        <span class="nut-val" itemprop="proteinContent">38g</span>
+        <span class="nut-label">Protein</span>
+      </div>
+      <div class="nut-cell">
+        <span class="nut-val" itemprop="carbohydrateContent">28g</span>
+        <span class="nut-label">Carbs</span>
+      </div>
+      <div class="nut-cell">
+        <span class="nut-val" itemprop="fatContent">14g</span>
+        <span class="nut-label">Fat</span>
+      </div>
+      <div class="nut-cell">
+        <span class="nut-val" itemprop="saturatedFatContent">4g</span>
+        <span class="nut-label">Sat Fat</span>
+      </div>
+      <div class="nut-cell">
+        <span class="nut-val" itemprop="sodiumContent">780mg</span>
+        <span class="nut-label">Sodium</span>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <strong>Nutrition estimate</strong> based on USDA FoodData Central data for bone-in chicken thigh and drumstick (cooked, skin on), Yukon Gold potato, gochujang, and tamari. Fat and saturated fat figures assume skin is consumed — if you remove skin before eating, fat drops to approximately 7g and sat fat to ~2g per serving, and protein rises slightly as a proportion of calories. Sodium is primarily from tamari (~580mg) and gochujang (~140mg) per serving; actual values vary by brand. Potatoes contribute the majority of carbs (~22g of the 28g total).
+    </div>
+
+  </div>
+</article>
+</body>
+</html>

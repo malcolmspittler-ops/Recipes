@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camarones a la Diabla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "name": "Camarones a la Diabla",
+  "description": "Large shrimp in a sauce of rehydrated guajillo and árbol chilis, tomato, garlic, and chipotle. The sauce is fried until dark and concentrated before the shrimp are added. Medium heat, very low saturated fat.",
+  "recipeYield": "4 servings",
+  "recipeCategory": "Main Course",
+  "recipeCuisine": "Mexican",
+  "keywords": "shrimp, Mexican, diabla, guajillo, chipotle, gluten-free, high protein, low fat",
+  "prepTime": "PT20M",
+  "cookTime": "PT20M",
+  "totalTime": "PT40M",
+  "recipeIngredient": [
+    "4 guajillo chilis, stemmed and seeded",
+    "3 arbol chilis, stemmed",
+    "2 roma tomatoes, roughly chopped",
+    "4 cloves garlic",
+    "1 chipotle pepper in adobo",
+    "1 tsp adobo sauce",
+    "0.5 cup chili soaking water",
+    "0.5 tsp cumin",
+    "0.5 tsp salt",
+    "2 lb large shrimp 16-20 count, peeled and deveined tails on",
+    "1 Tbsp neutral oil",
+    "0.5 tsp salt",
+    "juice of 1 lime",
+    "fresh cilantro for serving",
+    "lime wedges for serving",
+    "sliced white onion for serving"
+  ],
+  "recipeInstructions": [
+    { "@type": "HowToStep", "text": "Toast dried chilis in a dry skillet over medium heat, pressing flat with a spatula, 30 seconds per side until fragrant and slightly darkened. Do not burn." },
+    { "@type": "HowToStep", "text": "Submerge toasted chilis in boiling water 15 minutes until softened. Reserve 0.5 cup soaking liquid." },
+    { "@type": "HowToStep", "text": "Blend chilis, soaking water, tomatoes, garlic, chipotle, adobo sauce, cumin, and salt until completely smooth. Strain through a medium-mesh sieve, pressing solids through. Discard skins." },
+    { "@type": "HowToStep", "text": "Heat 1 Tbsp oil in a wide skillet over medium-high. Pour in strained sauce. Fry 5-7 minutes, stirring frequently, until sauce darkens two shades and smells toasty rather than raw." },
+    { "@type": "HowToStep", "text": "Reduce heat to medium. Season shrimp lightly with salt. Add to sauce in a single layer. Cook 2 minutes, flip, cook 1 minute more. Pull off heat the moment they are opaque." },
+    { "@type": "HowToStep", "text": "Squeeze lime over the top. Serve immediately with cilantro, raw onion, and lime wedges." }
+  ],
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "servingSize": "1/4 of recipe",
+    "calories": "280 kcal",
+    "proteinContent": "38 g",
+    "carbohydrateContent": "8 g",
+    "fatContent": "5 g",
+    "saturatedFatContent": "0.8 g",
+    "sodiumContent": "680 mg"
+  }
+}
+</script>
+<style>
+  :root {
+    --ink: #1a1714;
+    --paper: #faf8f5;
+    --warm: #e8e2d9;
+    --accent: #b5341a;
+    --accent-2: #e07820;
+    --accent-light: #fceee9;
+    --muted: #7a7168;
+    --radius: 6px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: #1a0800;
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .recipe-page {
+    max-width: 720px;
+    margin: 2rem auto;
+    background: var(--paper);
+    border-radius: 12px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.45);
+    overflow: hidden;
+  }
+  .recipe-header {
+    background: linear-gradient(135deg, #b5341a 0%, #7a1f0e 55%, #3d0d05 100%);
+    color: white;
+    padding: 2.5rem 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .recipe-header::before {
+    content: '🌶';
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 7rem;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+  .recipe-header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.85rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.3rem;
+    position: relative;
+  }
+  .recipe-header .subtitle {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 1.4rem;
+    position: relative;
+  }
+  .recipe-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    position: relative;
+  }
+  .meta-item {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: var(--radius);
+    padding: 0.4rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .meta-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.07em; color: rgba(255,255,255,0.4); }
+  .meta-value { font-size: 0.85rem; font-weight: 600; color: white; }
+  .recipe-body { padding: 2rem 2.5rem 2.5rem; }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    margin: 2rem 0 0.9rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--warm);
+  }
+  h3 {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 1.4rem 0 0.6rem;
+  }
+  .ing-group { margin-bottom: 1rem; }
+  .ing-item {
+    display: flex;
+    gap: 0.8rem;
+    padding: 0.32rem 0;
+    border-bottom: 1px solid var(--warm);
+    font-size: 0.92rem;
+    align-items: baseline;
+  }
+  .ing-item:last-child { border-bottom: none; }
+  .ing-qty {
+    min-width: 90px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .steps { counter-reset: step; }
+  .step {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+  .step::before {
+    counter-increment: step;
+    content: counter(step);
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .note-box {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.87rem;
+    margin: 1rem 0;
+    line-height: 1.5;
+  }
+  .key-technique {
+    background: #3d0d05;
+    color: white;
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+    margin: 1.2rem 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .key-technique strong {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 0.4rem;
+  }
+  .nutrition-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0 0.5rem; }
+  .nut-cell {
+    background: var(--warm);
+    border-radius: var(--radius);
+    padding: 0.6rem 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 70px;
+  }
+  .nut-val { font-size: 1.2rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: var(--ink); }
+  .nut-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-top: 0.1rem; }
+  .nut-cell.highlight { background: var(--accent-light); }
+  .nut-cell.highlight .nut-val { color: var(--accent); }
+  .footer-note {
+    font-size: 0.81rem;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--warm);
+  }
+  @media (max-width: 600px) {
+    .recipe-page { margin: 0; border-radius: 0; }
+    .recipe-header, .recipe-body { padding: 1.5rem; }
+    .recipe-header::before { display: none; }
+  }
+</style>
+</head>
+<body>
+<article class="recipe-page" itemscope itemtype="https://schema.org/Recipe">
+  <meta itemprop="recipeYield" content="4 servings">
+  <meta itemprop="prepTime" content="PT20M">
+  <meta itemprop="cookTime" content="PT20M">
+
+  <header class="recipe-header">
+    <h1 itemprop="name">Camarones a la Diabla</h1>
+    <div class="subtitle">Mexican Devil Shrimp · Guajillo · Árbol · Chipotle</div>
+    <div class="recipe-meta">
+      <div class="meta-item"><span class="meta-label">Serves</span><span class="meta-value">4</span></div>
+      <div class="meta-item"><span class="meta-label">Total Time</span><span class="meta-value">~40 min</span></div>
+      <div class="meta-item"><span class="meta-label">Heat</span><span class="meta-value">🌶 Medium</span></div>
+      <div class="meta-item"><span class="meta-label">Sat Fat</span><span class="meta-value">Very Low</span></div>
+      <div class="meta-item"><span class="meta-label">Gluten-Free</span><span class="meta-value">✓ Naturally</span></div>
+    </div>
+  </header>
+
+  <div class="recipe-body">
+
+    <div class="key-technique">
+      <strong>Critical step — frying the sauce</strong>
+      After blending and straining, the sauce must be fried in hot oil until it darkens two full shades and smells toasty rather than raw. Most home recipes skip this or do it timidly. It is the difference between a flat red shrimp dish and something with genuine depth.
+    </div>
+
+    <h2>Ingredients</h2>
+
+    <h3>Sauce</h3>
+    <div class="ing-group">
+      <div class="ing-item"><span class="ing-qty">4</span><span itemprop="recipeIngredient">guajillo chilis, stemmed and seeded</span></div>
+      <div class="ing-item"><span class="ing-qty">3</span><span itemprop="recipeIngredient">árbol chilis, stemmed (seeds in for medium heat)</span></div>
+      <div class="ing-item"><span class="ing-qty">2</span><span itemprop="recipeIngredient">roma tomatoes, roughly chopped</span></div>
+      <div class="ing-item"><span class="ing-qty">4 cloves</span><span itemprop="recipeIngredient">garlic</span></div>
+      <div class="ing-item"><span class="ing-qty">1</span><span itemprop="recipeIngredient">chipotle pepper in adobo</span></div>
+      <div class="ing-item"><span class="ing-qty">1 tsp</span><span itemprop="recipeIngredient">adobo sauce</span></div>
+      <div class="ing-item"><span class="ing-qty">½ cup</span><span itemprop="recipeIngredient">chili soaking water (reserved)</span></div>
+      <div class="ing-item"><span class="ing-qty">½ tsp</span><span itemprop="recipeIngredient">ground cumin</span></div>
+      <div class="ing-item"><span class="ing-qty">½ tsp</span><span itemprop="recipeIngredient">salt</span></div>
+    </div>
+
+    <h3>Shrimp</h3>
+    <div class="ing-group">
+      <div class="ing-item"><span class="ing-qty">2 lb</span><span itemprop="recipeIngredient">large shrimp, 16-20 count, peeled and deveined, tails on</span></div>
+      <div class="ing-item"><span class="ing-qty">1 Tbsp</span><span itemprop="recipeIngredient">neutral oil</span></div>
+      <div class="ing-item"><span class="ing-qty">½ tsp</span><span itemprop="recipeIngredient">salt</span></div>
+      <div class="ing-item"><span class="ing-qty">1</span><span itemprop="recipeIngredient">lime, juiced</span></div>
+    </div>
+
+    <h3>To Serve</h3>
+    <div class="ing-group">
+      <div class="ing-item"><span class="ing-qty">—</span><span itemprop="recipeIngredient">fresh cilantro</span></div>
+      <div class="ing-item"><span class="ing-qty">—</span><span itemprop="recipeIngredient">lime wedges</span></div>
+      <div class="ing-item"><span class="ing-qty">—</span><span itemprop="recipeIngredient">thinly sliced white onion</span></div>
+    </div>
+
+    <h2>Method</h2>
+
+    <h3>1 — Toast &amp; Soak Chilis</h3>
+    <div class="steps" itemprop="recipeInstructions">
+      <div class="step"><p>Toast dried chilis in a dry skillet over medium heat, pressing flat with a spatula, <strong>30 seconds per side</strong> until fragrant and slightly darkened. You want pliable and aromatic — not black. Burned chilis make the sauce bitter and there is no fixing it.</p></div>
+      <div class="step"><p>Transfer toasted chilis to a bowl. Cover with boiling water and submerge with a plate or small lid. Soak <strong>15 minutes</strong> until fully softened. Reserve ½ cup soaking liquid — don't discard it.</p></div>
+    </div>
+
+    <h3>2 — Build &amp; Strain Sauce</h3>
+    <div class="steps" itemprop="recipeInstructions">
+      <div class="step"><p>Add softened chilis, reserved soaking water, tomatoes, garlic, chipotle, adobo sauce, cumin, and salt to a blender. Blend on high until completely smooth, at least 60 seconds.</p></div>
+      <div class="step"><p>Strain through a medium-mesh sieve into a bowl, pressing and scraping the solids through with a spoon. Discard what remains in the sieve — mostly skins and seeds. The strained sauce should be smooth and deeply red.</p></div>
+    </div>
+
+    <h3>3 — Fry the Sauce</h3>
+    <div class="steps" itemprop="recipeInstructions">
+      <div class="step"><p>Heat 1 Tbsp oil in a wide skillet or saucepan over medium-high until shimmering. Pour in the strained sauce all at once — <strong>it will splatter aggressively</strong>, have a splatter screen or loose lid ready.</p></div>
+      <div class="step"><p>Fry the sauce <strong>5–7 minutes</strong>, stirring frequently, until it darkens noticeably and the smell shifts from raw chili to something toasty and concentrated. The sauce will thicken and reduce. This is the flavor-building step — don't rush it or skip it.</p></div>
+    </div>
+
+    <h3>4 — Cook Shrimp</h3>
+    <div class="steps" itemprop="recipeInstructions">
+      <div class="step"><p>Reduce heat to medium. Season shrimp lightly with salt. Add to the sauce in a single layer.</p></div>
+      <div class="step"><p>Cook <strong>2 minutes</strong>, flip each shrimp, cook <strong>1 minute more</strong>. Pull off heat the moment they turn opaque — residual heat will finish them. Overcooked shrimp in a spicy sauce cannot be fixed.</p></div>
+      <div class="step"><p>Squeeze lime juice over the top. Serve immediately with cilantro, raw white onion, and extra lime wedges alongside.</p></div>
+    </div>
+
+    <div class="note-box">
+      <strong>Serving suggestion:</strong> Excellent over white rice or cauliflower rice, which absorbs the sauce. Also works in warm corn tortillas as tacos. The raw white onion garnish is not optional — the sharp bite cuts the richness of the sauce and is part of the dish.
+    </div>
+
+    <h2>Nutrition <span style="font-family:'DM Sans';font-size:0.78rem;color:var(--muted);font-weight:400;">(per serving · 1/4 recipe · shrimp and sauce only)</span></h2>
+    <div class="nutrition-bar" itemprop="nutrition" itemscope itemtype="https://schema.org/NutritionInformation">
+      <meta itemprop="servingSize" content="1/4 of recipe">
+      <div class="nut-cell highlight"><span class="nut-val" itemprop="calories">280</span><span class="nut-label">kcal</span></div>
+      <div class="nut-cell highlight"><span class="nut-val" itemprop="proteinContent">38g</span><span class="nut-label">Protein</span></div>
+      <div class="nut-cell"><span class="nut-val" itemprop="carbohydrateContent">8g</span><span class="nut-label">Carbs</span></div>
+      <div class="nut-cell"><span class="nut-val" itemprop="fatContent">5g</span><span class="nut-label">Fat</span></div>
+      <div class="nut-cell"><span class="nut-val" itemprop="saturatedFatContent">0.8g</span><span class="nut-label">Sat Fat</span></div>
+      <div class="nut-cell"><span class="nut-val" itemprop="sodiumContent">680mg</span><span class="nut-label">Sodium</span></div>
+    </div>
+
+    <div class="footer-note">
+      <strong>Nutrition estimate</strong> based on USDA FoodData Central data for large shrimp (cooked), guajillo chilis, roma tomatoes, and chipotle in adobo. Shrimp is one of the highest protein-to-calorie proteins available — 38g protein at 280 kcal is an exceptional ratio. Sat fat is negligible. Sodium comes primarily from salt and adobo sauce — actual value varies by chipotle brand. Carbs are mostly from the dried chilis and tomatoes. Does not include rice, tortillas, or other accompaniments.
+    </div>
+
+  </div>
+</article>
+</body>
+</html>
